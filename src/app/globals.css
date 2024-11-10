@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "@flaticon/flaticon-uicons/css/all/all";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +20,46 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.popup-card {
+  background-color: white; /* Background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  z-index: 1000; /* Make sure it appears on top of other elements */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Below the pop-up card */
+}
+
+/* Style for scrollbar track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+  padding: 2px;
+}
+
+/* Style for scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+/* Style for scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #3e72e2;
 }
