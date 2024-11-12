@@ -3,7 +3,7 @@
 import Image from "next/image"
 
 import html from "../../../public/assets/html.png"
-import { useContext, useState } from "react"
+import { useContext, useState, useRef, useEffect } from "react"
 import { statsContext } from "@/app/skill-test/page"
 
 const SkillForm = ({open, setOpen}) => {
@@ -18,6 +18,9 @@ const SkillForm = ({open, setOpen}) => {
     const [rankError, setRankError] = useState(false);
     const [percentileError, setPercentileError] = useState(false);
     const [scoreError, setScoreError] = useState(false);
+
+
+    const updateRef = useRef();
 
     const handleRank = (e) => {
         if(e.target.value === ''){
@@ -89,10 +92,22 @@ const SkillForm = ({open, setOpen}) => {
         setStats(newStats);
         setOpen(false);
     }
-
+    
+    const handleClickOutside = (event) => {
+        if (updateRef.current && !updateRef.current.contains(event.target)) {
+            setOpen(false);
+        }
+    }
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+          document.removeEventListener('click', handleClickOutside);
+        };
+      }, []);
+    
 
   return (
-    <div className="popup-card bg-white rounded-lg border-[1px]  p-8 space-y-8">
+    <div ref={updateRef} className="popup-card bg-white rounded-lg border-[1px]  p-8 space-y-8">
 
         <div className="flex justify-between items-center">
             <h1 className="text-[24px] font-bold">Update Scores</h1>

@@ -4,7 +4,7 @@ import HtmlSkill from '@/components/skill-test/html';
 import SkillForm from '@/components/skill-test/skillsForm';
 import Statistics from '@/components/skill-test/stats';
 import SkillWiseAnalysis from '@/components/skillWiseAnalysis';
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useRef } from 'react'
 import PercentileChart from '@/components/lineChart';
 import QuestionWiseAnalysis from '@/components/questionWiseAnalysis';
 
@@ -22,6 +22,8 @@ const SkillTest = () => {
 
     const [stats, setStats] = useState(defaultStats);
     const [open, setOpen] = useState(false);
+
+    
 
   return (
     <statsContext.Provider value={{stats, setStats}}>
